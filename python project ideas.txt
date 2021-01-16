@@ -1,0 +1,50 @@
+ideas for Python project
+
+searching large block of text for keywords or phrases
+	-maybe something related to Spanish or Portuguese?
+
+-enter a portuguese word
+-it searches youtube for videos of native speakers saying that word
+-shows timestamp of all the times that they say that word
+-would it try to detect through subtitles or through voice? voice would be better? maybe just if its the official subtitles?
+but then that limits and reduces the number of videos greatly. 
+Open transcript option in youtube already does this. but i don't think you can search for youtube videos that have certain words in the transcript and provide a list
+-can add option to only show if they say it multiple times
+-lists all videos that it finds
+-option to download all the videos
+
+build a website for it using html, css, python
+
+-download and create object for storing list of words
+-connect somehow to transcript of every youtube video
+-enter word and then it searches transcipts
+-produces video urls and timestamp as output.
+
+
+log out of youtube. change location to Brazil. go to trending tab www.youtube.com/feed/trending.
+get list of all the top videos
+ask user for word they want to search
+use youtube_transcript_api to get transcripts of each video
+search transcript for word
+
+list (most popular videos)
+Code symbol that, when clicked, opens the fullscreen APIs Explorer widget and populates it with values for the 'list (most popular videos)' example for the videos.list method.	This example retrieves a list of YouTube's most popular videos. The regionCodeparameter identifies the country for which you are retrieving videos. The sample code is set to default to return the most popular videos in the United States. You could also use the videoCategoryId parameter to retrieve the most popular videos in a particular category.
+https://developers.google.com/youtube/v3/docs/videos/list
+https://www.youtube.com/watch?v=th5_9woFJmk&ab_channel=CoreySchafer
+
+pip install google-api-python-client
+
+
+website for finding the best language learning resources
+
+webscaper
+put project in github
+
+
+machine learning or web scraping with python, django or flask for front-end
+website for finding the best language learning resources (maybe just javascript, html, css). kinda like how this person did it for aws cert resources https://www.reddit.com/r/AWSCertifications/comments/ehdi6n/a_website_to_keep_all_aws_certification_resources/
+-search around reddit and stuff for resources people have used, include summary.
+
+is there anything that web scraping would be useful for that Ane can think of? Like in regards to law, legality of staying in U.S, keeping track of status, finding useful information for what they are looking for, etc.
+a website for
+scrape websites for the info and display on my own website.  well for scraping, it woud have to be something that you would change what you are looking for.

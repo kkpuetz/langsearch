@@ -1,0 +1,180 @@
+print out index 0 of transcript list
+should return the first dictionary
+
+print(video_transcript[0])
+
+for k,v in video_transcript[0].items():
+	print(k,v)
+
+
+find if first dictionary contains word
+
+for k,v in video_transcript[0].items():
+	if word in v:
+		print("I found it")
+	else
+		print("nope")
+
+or just do
+
+if video_transcript[0]['text'] == word
+	print("I found it")
+else
+	print("nope")
+
+might need to use 'in', or regex, or contains.
+
+if word in video_transcript[0]['text']
+	print("I found it")
+else
+	print("nope")
+
+so that it only searches the text value and not timestamp.
+
+for k,v in video_transcript[0].items
+	if v=="text" AND word in v:
+		print("I found it")
+	else
+		print("nope")
+
+for key, value in video_transcript[0].items
+	if video_transcript[0]['text'] == word
+		print("I found it")
+	else
+		print("nope")
+
+
+above might not be right because it is only looking into the first dictionary in the transcript. well maybe since it will
+search through all 3 keys in the first dictionary and search just text
+but could I make the find go through all the dictionaries for just the text key?
+
+for i in video_transcript
+	if video_transcript[i].get('text') == word
+		print("I found it")
+	else
+		print("nope")
+
+
+could use get() method to find value of text if above doesn't work
+if video_transcript[0].get('text') == word
+
+
+if this works, then make it store the timestamp and the video ID (in a list maybe).
+
+
+for i in video_transcript
+	if video_transcript[i].get('text') == word
+		print("I found it in" + video_transcript[i])
+		match.append([{"id": video_id, "time": video_transcript[i][timestamp]})
+	else
+		print("nope")
+		#replace with some exception handling
+
+
+i will store the dictionary values themselves and not just 1, 2, etc.
+
+match = []
+
+for i in video_transcript:
+   if word in i['text']:
+      print("yes")
+      match.append({'match_id': video_id, 'timestamp': i['start']})
+   else:
+      print("no")
+
+print(match)
+
+
+
+
+#might be on to something. this one just return the items 
+print(response['items'])
+
+append id on to #"https://www.youtube.com/watch?v="
+
+https://stackoverflow.com/questions/31195758/access-youtube-video-url-with-youtube-video-id
+https://developers.google.com/youtube/v3/docs/videos/list
+
+https://www.youtube.com/watch?v=UXSMZ8VQvFY
+
+https://www.youtube.com/watch?v=87HIVhxCeo8
+https://www.youtube.com/watch?v=bDzAr0domjY
+https://youtu.be/bDzAr0domjY?t=24
+https://www.youtube.com/watch?v=ULRaeV6QKyU
+https://www.youtube.com/watch?v=GckFsTbCXpk
+https://www.youtube.com/watch?v=VWnZXDfROTQ
+
+
+part that grabs the top 5 video ids should be made as a function. So I can call it again when I have too few matches or if too few have transcripts
+
+n = 0
+for i in id_list:
+    video_id = id_list[n]
+    try:
+        video_transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['pt'])
+
+        match = []
+ 
+#searches video transcript for word and stores video id and timestamp in a dictionary in the match list, update later to ignore upper/lower case
+        for i in video_transcript:
+           if word in i['text']:
+              #print("yes")
+              match.append({'match_id': video_id, 'timestamp': i['start']})
+           #else:
+              #print("no")
+
+    except:
+        "no transcript available in selected language"
+        n = n + 1
+
+
+find out what the "start" variable stores exactly. May need to remove what is after the decimal since it might just be hundreadths of a second which isn't needed and doesn't work for making the url
+
+"/".join(string_to_split.split("/")[:-1])
+
+".".join(str(i['timestamp']).split(".")[:-1])
+
+
+Things to do:
+features
+-searches for phrases as well - i think this is working at least for bom dia
+-update for other languages
+	-ask what language the word is in.
+	-ask what region/country you want to hear it in (if applicable). Spanish in Mexico, Guatemala, Spain, etc.
+	-give list of options for langauges and regions.
+-ignore upper/lower case for word-match search
+-review the use of mostPopular to get the videos. can it be random?
+-option to get more videos (different than what were first given)
+-option to get different channels if you want to hear someone else
+-what to do after we have the urls? if it is a website then I can display the actual videos on the page. Use other tools to bridge between backend and front-end development and put on resume
+javascript front-end, flask or django
+
+readability, efficiency
+-make it a function so I can call it
+-replace video_id variable with match[]
+-review variable names and update with more descriptive names
+
+why is it not returning 20 for max results?
+something needs to be updated in the for loop. it is not iterating over each results, but i is just parts of the same video
+
+n = 0
+match = []
+for i in id_list:
+    video_id = id_list[n]
+
+    #added try and except since language wasn't available in 3rd transcript so it gave an error and didn't continue
+    try:
+        video_transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['pt'])
+
+        #searches video transcript for word and stores video id and timestamp in a dictionary in the match list, update later to ignore upper/lower case
+        for i in video_transcript:
+           if word in i['text']:
+              #print("yes")
+              match.append({'match_id': video_id, 'timestamp': i['start']})
+           #else:
+              #print("no")
+
+    except:
+        "no transcript available in selected language"
+
+    n = n + 1
